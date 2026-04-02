@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mess - It's a mEsS</title>
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('https://i.pinimg.com/474x/14/1d/16/141d16cae092c1c776097b72aa589d7d.jpg');
+    background-size: cover;/*배경이 딱 맞춰지게 하는 놈*/
+    background-position: center;
+    background-attachment: fixed;/*배경이 스크롤에 따라 움직이지 않게 하는 놈*/
+    color: #7fff00;
+    font-family: 'Share Tech Mono', monospace;/*제목 글씨체 간지나게 하기*/
+}
+
+header {
+    display: flex;
+    flex-direction: column;/*flexbox가 궁극의 배치 무기라고해서 썼는데 사실 잘 모르겠음*/
+    margin-top: 80px;/*대충 여백임*/
+    padding: 40px;/*이것도*/
+    text-align: center;/*제목 가운데로 놓는거*/
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #952020;
+    font-family: 'Orbitron', sans-serif;
+}
+
+section {
+    max-width: 800px;
+    margin: 40px auto;
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border: 2px solid #7fff00;/*테두리 느낌으로다가*/
+}
+
+.section-header {
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;/*각 구역 제목들이랑 내용사이 간격ㅇㅁ*/
+}
+
+.section-content {
+    clear: both;
+}
+
+h2 {
+    border-bottom: 2px solid #7fff00;
+    display: inline-block;/*제목 밑에만 선 긋게 해주기*/
+    padding-bottom: 5px;
+    text-shadow: 0 0 10px #952020;
+}
+
+.lyrics-box {
+    text-align: center;/*예시처럼 가사 가운데로 위치하게하기*/
+    color: #fff;
+}
+
+.highlight {
+    font-weight: bold;/*강조한거 좀더 강조느낌?*/
+    color: #7fff00;
+}
+
+
+#point-list {
+    list-style: none;/*리스트 앞에 점 없애버랴*/
+   
+}
+
+#point-list li {
+    transition: 0.3s;
+    padding: 10px;
+    border-bottom: 1px solid rgba(127,255,0,0.2);
+}/*선 그엇*/
+
+#point-list li:hover {
+     box-shadow: 0 0 20px #7fff00;
+    background: rgba(127,255,0,0.1);
+}
+.playlist-table {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    background: #7fff00;
+    padding: 15px;
+}
+
+.playlist-table table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #000000;
+}/*테이블 전체적인 모양 설정하는거임*/
+
+.playlist-table th {
+    font-size: 1.1rem;
+    padding: 10px;
+    text-align: center;
+    background: rgba(127,255,0,0.8);
+}/*테이블 제목들 부분하고 밑에 곡들 부분 구분하는거*/
+.playlist-table td {
+     font-size: 0.9rem;
+    padding: 10px;
+    text-align: center;
+}
+
+.playlist-table tr {
+    border-bottom:  solid rgba(0, 0, 0, 0.2);
+}/*solid는 선 긋는거임*/
+
+.playlist-table tr:hover {
+    transition: 0.3s;
+    background: rgba(0, 0, 0, 0.2);
+}
+.track-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}/*엘범들 모양 배치해주는거*/
+
+.track {
+    width: 48%;
+    background: rgba(0,0,0,0.8);
+    border: 1px solid rgba(127,255,0,0.4);
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;/*마우스 커서 올렸을때 약간 "부웅"하는 느낌?ㅇㅇ*/
+}/*엘범들 하나하나 모양 설정하는거*/
+
+.track:hover {
+    box-shadow: 0 0 20px #7fff00;
+    background: rgba(127,255,0,0.1);
+}
+
+.track img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.center {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}/*마지막 곡 하나만 가운데로 배치해주는건데 이건 Ai가 수정 해준거라 이유는 모르겠음*/
+
+.song-title {
+    color: #fff;
+}
+
+footer {
+    text-align: center;
+    margin: 50px;
+}/*div 쓰는 대신 이거 써서 버튼같은건 마지막 이라는거 표시+가운데로 배치*/
+
+.listen-btn {
+    border: 1px solid #7fff00;
+    background: transparent;
+    color: #7fff00;
+    padding: 10px 30px;
+}
+
+.listen-btn:hover {
+    background: #7fff00;
+    color: #000;
+    box-shadow: 0 0 20px #7fff00;
+    transition: 0.3s;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <p class="artist-name">Mess</p>
+    <h1>EP 4집 'It's a mEsS'</h1>
+    <p class="subtitle">지들만의 매력으로 가득찬 플레이리스트</p>
+</header>
+
+<section id="killing">
+    <div class="section-header"><h2>KILLING PART</h2></div>
+    <div class="section-content">
+        <div class="lyrics-box">
+            <p>You need to find a way</p>
+            <p class="highlight">For what you want to say,But before tomorrow</p>
+            <p>Cause my friend said he'd take you home</p>
+        </div>
+    </div>
+</section>
+
+<section id="point">
+    <div class="section-header"><h2>POINT</h2></div>
+    <div class="section-content">
+        <ul id="point-list">
+            <li>아무 의미없이 라임만 맞춘 가사</li>
+            <li>마이웨이 마인드</li>
+        </ul>
+    </div>
+</section>
+
+<section id="playlist">
+<div class="section-header"><h2>PLAYLIST</h2></div>
+    <div class="section-content">
+         <div class="playlist-table">
+    <table>
+        <tr>
+            <th>Track</th>
+            <th>곡명</th>
+            <th>Time</th>
+        </tr>
+        <tr><td>01</td><td>USO</td><td>1분 42초</td></tr>
+        <tr><td>02</td><td>Dash</td><td>2분 47초</td></tr>
+        <tr><td>03</td><td>Black Tesla</td><td>2분 20초</td></tr>
+        <tr><td>04</td><td>너의 모든 순간</td><td>4분 3초</td></tr>
+        <tr><td>05</td><td>supersonic</td><td>4분 44초</td></tr>
+    </table>
+</div>
+        <div class="track-grid">
+
+            <div class="track">
+                <img src="https://image.bugsm.co.kr/album/images/500/3350/335088.jpg">
+                <div class="song-title">01. USO</div>
+                <div class="artist">SID</div>
+            </div>
+
+            <div class="track">
+                <img src="https://image.bugsm.co.kr/album/images/500/206098/20609824.jpg">
+                <div class="song-title">02. Dash</div>
+                <div class="artist">NMIXX</div>
+            </div>
+
+            <div class="track">
+                <img src="https://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/085/547/757/85547757_1724997320704_1_600x600.JPG">
+                <div class="song-title">03. Black Tesla</div>
+                <div class="artist">캔드비 블루</div>
+            </div>
+
+            <div class="track">
+                <img src="https://image.bugsm.co.kr/album/images/500/4132/413209.jpg">
+                <div class="song-title">04. 너의 모든 순간</div>
+                <div class="artist">성시경</div>
+            </div>
+
+            <div class="track center">
+                <img src="https://image.yes24.com/momo/TopCate363/MidCate02/36217987.jpg">
+                <div class="song-title">05. supersonic</div>
+                <div class="artist">Oasis</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<footer>
+    <button type="button" class="listen-btn">전곡 감상하기</button>
+</footer>
+
+</body>
+</html>
